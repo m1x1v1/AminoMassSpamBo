@@ -22,10 +22,10 @@ email=input("Email/Почта:")
 password=input('Password/Пароль:')
 client = amino.Client()
 client.login(email=email, password=password)
-for name, id in zip(client.sub_clients().name, client.sub_clients().comId):
-    print(f"{name}: {id}")
-    
-comid = str(input("Выберите сообщество(id): "))
+clients = client.sub_clients(start=0, size=1000)
+for x, name in enumerate(clients.name, 1):
+    print(f"{x}.{name}")
+communityid = clients.comId[int(input("Выберите сообщество/Select the community: "))-1]
 #  == config == 
 
 msgSpam=input('Message/Сообщение:')
@@ -49,7 +49,7 @@ def start_thread(sub_client, chatId, msgSpam, msgType):
 
 # == source    ==
 
-sub_client = amino.SubClient(comId=str(comid), profile=client.profile)
+sub_client = amino.SubClient(comId=str(communityId), profile=client.profile)
 
 threads_list = sub_client.get_chat_threads().json;
 
