@@ -1,8 +1,6 @@
-﻿from colorama import init
-from colorama import Fore, Back, Style
+﻿from colorama import init, Fore, Back, Style
 init()
-import time
-import os
+import time, os
 from threading import Thread
 print(Back.BLACK)
 print(Fore.BLUE)
@@ -50,7 +48,7 @@ def start_thread(sub_client, chatId, msgSpam, msgType):
 
 # == source    ==
 
-sub_client = amino.SubClient(comId=str(communityId), profile=client.profile)
+sub_client = amino.SubClient(comId=str(communityid), profile=client.profile)
 
 threads_list = sub_client.get_chat_threads().json;
 
